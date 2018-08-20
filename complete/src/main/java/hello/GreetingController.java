@@ -20,6 +20,11 @@ public class GreetingController {
                         String.format(template, name));
   }
 
+  @GetMapping(path = "/greeting2", produces = MediaType.APPLICATION_XML_VALUE)
+  public Greeting2 greeting2(@RequestParam(value = "name", defaultValue = "World") final String name) {
+    return new Greeting2(counter.incrementAndGet(), String.format(template, name));
+  }
+
   @PostMapping(path = "/post", produces = MediaType.APPLICATION_XML_VALUE, consumes = MediaType.APPLICATION_XML_VALUE)
   public void post(@RequestBody final Greeting name) {
   }
